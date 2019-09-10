@@ -1,0 +1,9 @@
+docker build -t myapp .
+ 
+docker image ls
+
+docker network create mynet
+
+docker run -d --network=mynet --name=mydb stackupiss/northwind-db:v1
+
+docker run -d -e DB_USER=root -e DB_PASSWORD=changeit -p 3000:3000 --network=mynet --name=myapp myapp
